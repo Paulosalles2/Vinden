@@ -1,0 +1,118 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-vinden {
+    background-color: #5a1212 !important;
+}
+
+.navbarNav {
+    color: aliceblue !important;
+}
+
+.navbar-brand img.logo {
+  height: 40px; /* ajuste aqui */
+  width: auto;
+  object-fit: contain;
+}
+
+.navbar-vinden { --bs-navbar-bg:#0f172a; }
+
+    /* Botão: sem borda/outline + container para o ripple */
+    .navbar-vinden .navbar-toggler{
+      position: relative; overflow: hidden; border:0 !important;
+      outline:none !important; box-shadow:none !important; padding:.4rem .6rem;
+    }
+    .navbar-vinden .navbar-toggler:focus{ outline:none !important; box-shadow:none !important; }
+
+    /* Ícone custom (3 barras) */
+    .toggler-bars{ position:relative; display:inline-block; width:24px; height:18px; }
+    .toggler-bars i{
+      position:absolute; left:0; right:0; height:2px; background:#fff; border-radius:1px;
+      transform-origin:50% 50%; transition:transform .25s ease, opacity .2s ease, top .25s ease, bottom .25s ease;
+    }
+    .toggler-bars i:nth-child(1){ top:0; }
+    .toggler-bars i:nth-child(2){ top:8px; }
+    .toggler-bars i:nth-child(3){ bottom:0; }
+
+    /* Estado aberto → vira X */
+    .navbar-toggler[aria-expanded="true"] .toggler-bars i:nth-child(1){ top:8px; transform:rotate(45deg); }
+    .navbar-toggler[aria-expanded="true"] .toggler-bars i:nth-child(2){ opacity:0; transform:scaleX(0); }
+    .navbar-toggler[aria-expanded="true"] .toggler-bars i:nth-child(3){ bottom:auto; top:8px; transform:rotate(-45deg); }
+
+    /* Ripple CSS-only */
+    .toggler-bars::after{
+      content:""; position:absolute; left:50%; top:50%;
+      width:44px; height:44px; border-radius:50%;
+      transform:translate(-50%,-50%) scale(0);
+      background:radial-gradient(circle, rgba(255,255,255,.35) 0%, rgba(255,255,255,.2) 40%, rgba(255,255,255,0) 60%);
+      opacity:0; pointer-events:none;
+    }
+    .navbar-toggler:active .toggler-bars::after{
+      animation:ripple .5s ease-out;
+    }
+    @keyframes ripple{
+      0%{ transform:translate(-50%,-50%) scale(0); opacity:.6; }
+      60%{ opacity:.25; }
+      100%{ transform:translate(-50%,-50%) scale(2.6); opacity:0; }
+    }
+
+    /* Reduzir movimento quando solicitado */
+    @media (prefers-reduced-motion: reduce){
+      .toggler-bars i, .navbar-toggler:active .toggler-bars::after{ transition:none; animation:none; }
+    }
+
+    .video-box video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .full-bleed {
+  width: 100vw;
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Animações */
+  .js .reveal { opacity: 0; transform: translateY(12px); transition: opacity .6s ease, transform .6s ease, scale .6s ease; }
+.reveal.in { opacity: 1; transform: none; }
+  .fade-up { transform: translateY(16px); }
+  .fade-left { transform: translateX(-20px); }
+  .zoom-in { transform: scale(.96); }
+  [data-stagger] > * { transition-property: opacity, transform, scale; transition-duration: .6s; transition-timing-function: ease; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal, [data-stagger] > * { transition: none !important; }
+    .reveal { opacity: 1 !important; transform: none !important; }
+  }
+
+  /* Estilo resumido da seção */
+  #quem-somos .lead { max-width: 60ch; }
+  #quem-somos .metric { font-size: clamp(1.75rem, 2.5vw, 2.25rem); font-weight: 700; }
+  #quem-somos .card-founder { transition: transform .15s ease, box-shadow .15s ease; }
+  #quem-somos .card-founder:hover { transform: translateY(-2px); box-shadow: 0 .5rem 1rem rgba(0,0,0,.10); }
+  #quem-somos .avatar { width: 112px; height: 112px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 4px rgba(13,110,253,.15); }
+  #quem-somos .timeline { border-left: 2px solid var(--bs-border-color); margin-left: .75rem; padding-left: 1rem; }
+  #quem-somos .timeline .item { position: relative; margin-bottom: 1rem; }
+  #quem-somos .timeline .item::before {
+    content: ""; position: absolute; left: -1.125rem; top: .25rem; width: .75rem; height: .75rem; background: var(--bs-primary);
+    border-radius: 50%; box-shadow: 0 0 0 3px color-mix(in srgb, var(--bs-primary) 20%, transparent);
+  }
+
+
+ /* Mobile (≤576px): 9:16 */
+    @media (max-width: 575.98px) {
+      .video-box.ratio { --bs-aspect-ratio: 177.7777779%; }
+    }
+
+    .navbar-vinden {
+        color: aliceblue;
+        background-color: #5a1212 !important;
+    }
+
+    
